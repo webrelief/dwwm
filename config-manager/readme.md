@@ -4,6 +4,8 @@
 
 Ce module WordPress permet de gérer des configurations personnalisées en les stockant dans la table `wp_options` de WordPress. Il s'agit d'un exemple pédagogique pour comprendre les bases du développement de plugins WordPress.
 
+> [Télécharger le module](https://downgit.github.io/#/home?url=https://github.com/webrelief/dwwm/tree/main/config-manager)
+
 ## 🎯 Objectifs pédagogiques
 
 - Comprendre la structure d'un plugin WordPress
