@@ -1,8 +1,9 @@
 ## Fichiers readme
 
+Pour chacun de vos plugins Wordpress, il est conseillé de créer un fichier readme.md à la racine du dossier.
 Ces fichiers sont optionnels, mais importants car ils permettent d'expliquer ce que fait votre plugin.
 
-*A remplir selon la syntaxe markdown (.md)*
+*Vous pouvez les mettre en forme via la syntaxe markdown (.md)*
 
 ## Documentation pour markdown : 
 > Par Github : https://docs.github.com/fr/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
