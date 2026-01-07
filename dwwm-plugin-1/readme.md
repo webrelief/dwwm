@@ -34,7 +34,7 @@ Les commentaires sont de type PHPDoc, et doivent commencer avec 2 *
  */
 ```
 
-Ces commentaires sont lus par Wordpress pour que l’extension s’affiche correctement dans la liste de vos extensions Wordpress, et ainsi qu'elle puisse être ativée.
+Ces commentaires sont lus par Wordpress pour que l’extension s’affiche correctement dans la liste de vos extensions Wordpress, et ainsi qu'elle puisse être activée.
 
 <img src="images/image.png">
 
