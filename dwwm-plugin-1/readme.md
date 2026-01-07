@@ -1,6 +1,27 @@
-# Fichier principal 
+# Structure d'un module Wordpress : 
 
-## Premières lignes : commentaires 
+Le dossier d'un plugin doit être copier/coller (ou uploadé) dans le dossier wp-content/plugins de Wordpress.
+
+Il doit contenir au minimum un fichier .php qui a le même nom que le dossier.
+Exemple ci-dessous : 
+Dossier mon-plugin
+Fichier  mon-plugin.php
+
+
+Il est fortement recommandé de créer également un fichier readme.md.
+
+```text
+mon-plugin
+├── mon-plugin.php
+├── readme.md
+```
+
+
+
+## Le fichier principal  : 
+
+### Premières lignes : commentaires 
+Le fichier princiapl de votre plugin doit **OBLIGATOIREMENT** commencer par des commentaires.
 Les commentaires sont de type PHPDoc, et doivent commencer avec 2 *
 
 ```php
@@ -13,11 +34,11 @@ Les commentaires sont de type PHPDoc, et doivent commencer avec 2 *
  */
 ```
 
-Les commentaires de ce fichier sont interprétés pour que l’extension s’affiche dans la liste de vos extensions Wordpress.
+Ces commentaires sont lus par Wordpress pour que l’extension s’affiche correctement dans la liste de vos extensions Wordpress, et ainsi qu'elle puisse être ativée.
 
 <img src="images/image.png">
 
-## Petit controle de sécurité propre à Wordpress : 
+### Petit controle de sécurité propre à Wordpress : 
 
 ```php
 if (!defined('ABSPATH')) { 
@@ -25,7 +46,7 @@ if (!defined('ABSPATH')) {
 }
 ```
 
-## Création d'un lien dans le menu : 
+### Création d'un lien dans le menu : 
 Tout d'abord, on créé une fonction PHP.
 Cette fonction va faire appel à la fonction wordpress au nom explicite : ```add_menu_page() ```
 
@@ -57,7 +78,7 @@ add_action('admin_menu', 'dwwm_1_menu');
 ```
 
 
-## Création d'une page pour ce module : 
+### Création d'une page pour ce module : 
 Ici nous créons une page très simple en PHP qui génère un affichage HTML minimaliste : 
 ```php
 function dwwm_1_plugin_page() {
@@ -67,5 +88,5 @@ function dwwm_1_plugin_page() {
 ```
 Cette fonction ```dwwm_1_plugin_page()``` correspond au dernier paramètre de : ```add_menu_page() ```
 
-## Rendu final : 
-<img src="images/wp-dwwm-1.JPG">
+### Rendu final : 
+<img src="images/wp-dwwm-1.jpg">
