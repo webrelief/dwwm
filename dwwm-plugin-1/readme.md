@@ -24,7 +24,7 @@ mon-plugin
 ## Le fichier principal  : 
 
 ### Premières lignes : commentaires 
-Le fichier princiapl de votre plugin doit **OBLIGATOIREMENT** commencer par des commentaires.
+Le fichier principal de votre plugin doit **OBLIGATOIREMENT** commencer par des commentaires.
 Les commentaires sont de type PHPDoc, et doivent commencer avec 2 *
 
 ```php
