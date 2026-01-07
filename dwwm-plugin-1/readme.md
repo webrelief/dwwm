@@ -8,7 +8,7 @@ Dossier mon-plugin
 Fichier  mon-plugin.php
 
 
-Il est fortement recommandé de créer également un fichier readme.md.
+Il est fortement recommandé de créer également un fichier readme.md ([cf.annexe readme](../readmes.md)).
 
 ```text
 mon-plugin
