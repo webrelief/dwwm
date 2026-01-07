@@ -16,7 +16,10 @@ mon-plugin
 ├── readme.md
 ```
 
+## Rendu final de ce plugin de démonstration : 
+<img src="images/wp-dwwm-1.jpg">
 
+> [Télécharger ce plugin](https://downgit.github.io/#/home?url=https://github.com/webrelief/dwwm/tree/main/dwwm-plugin-1)
 
 ## Le fichier principal  : 
 
@@ -88,7 +91,3 @@ function dwwm_1_plugin_page() {
 ```
 Cette fonction ```dwwm_1_plugin_page()``` correspond au dernier paramètre de : ```add_menu_page() ```
 
-### Rendu final : 
-<img src="images/wp-dwwm-1.jpg">
-
-> [Télécharger ce plugin](https://downgit.github.io/#/home?url=https://github.com/webrelief/dwwm/tree/main/dwwm-plugin-1)
