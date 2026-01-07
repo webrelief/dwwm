@@ -6,9 +6,9 @@ Ces fichiers sont optionnels, mais importants car ils permettent d'expliquer ce 
 *Vous pouvez les mettre en forme via la syntaxe markdown (.md)*
 
 ## Documentation pour markdown : 
-> Par Github : https://docs.github.com/fr/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
+> Par Github : [https://docs.github.com/fr/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax](https://docs.github.com/fr/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 
-> Par Adobe : https://experienceleague.adobe.com/fr/docs/contributor/contributor-guide/writing-essentials/markdown
+> Par Adobe : [https://experienceleague.adobe.com/fr/docs/contributor/contributor-guide/writing-essentials/markdown](https://experienceleague.adobe.com/fr/docs/contributor/contributor-guide/writing-essentials/markdown)
 
 
 ## Prévisualisation :
