@@ -67,4 +67,5 @@ function dwwm_1_plugin_page() {
 ```
 Cette fonction ```dwwm_1_plugin_page()``` correspond au dernier paramètre de : ```add_menu_page() ```
 
-
+## Rendu final : 
+<img src="images/wp-dwwm-1.JPG">
