@@ -710,10 +710,26 @@ value="<?php echo $configs['telephone'] ?? ''; ?>"   // ← Utilise $configs
 ## 🎯 Allez plus loin
 ### Tester le module : 
 
-Pour érifier la présence des options ajoutées dans la table ```wp_options```
+Pour vérifier la présence des options ajoutées dans la table ```wp_options```
 vous pouvez exécuter la requête SQL suivante dans phpMyAdmin : 
 ```SELECT * FROM `wp_options` where option_name LIKE 'config_manager%'; ```
 
+### Récupérer les valeurs de la table ```wp_options```
+Dans votre thème, ou dans n'importe quel développement Wordpress, vous pouvez récupérer les valeurs de la table ```wp_options```
+à condition de connaître la clé associée.
+
+Pour cela, il suffit d'utiliser la fonction ```get_option('cle')``` avec la clé en paramètre
+Dans notre exemple, nos champs de formulaires étant sauvegardés en base avec le prefix ```config_manager_```
+nous pouvons les récupérer de la manière suivante : 
+
+```
+$telephone = get_option('config_manager_telephone');
+$email = get_option('config_manager_email');
+```
+
+#### 💡 Idées de mise en pratique :
+1. Ajouter des champs dans le formulaire (Lien LinkedIn, adresse postale, code postal et ville...)
+2. Récupérer les champs de votre module dans le footer de votre thème pour afficher ces informations de contact.
 
 ---
 
