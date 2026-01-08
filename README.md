@@ -7,4 +7,5 @@
 
 
 ## Annexes
-1. [Les readme](readmes.md)
+1. [Les fichiers readme.md](readmes.md)
+2. [Les principaux hook de Wordpress](hook-wordpress.md)
