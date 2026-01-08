@@ -1,0 +1,48 @@
+/* ========================================
+   Blog Card - Styles
+   ======================================== */
+
+.blog-card {
+    display: flex;
+    flex-direction: column;
+    background: #eee;
+    border-radius: 12px;
+    border: solid 1px #999;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    height: 100%;
+}
+
+/* Contenu */
+.blog-card__content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Titre */
+.blog-card__title {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    line-height: 1.4;
+    font-weight: 700;
+}
+
+.blog-card__title-link {
+    color: #111;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.blog-card__title-link:hover {
+    color: #6366f1;
+}
+
+/* Extrait */
+.blog-card__excerpt {
+    margin: 0;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.6;
+    flex-grow: 1;
+}
