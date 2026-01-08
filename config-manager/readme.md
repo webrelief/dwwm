@@ -1,10 +1,30 @@
 # Config Manager - Module WordPress
 
+- [Config Manager - Module WordPress](#config-manager---module-wordpress)
+  - [📋 Vue d'ensemble](#-vue-densemble)
+  - [🎯 Objectifs pédagogiques](#-objectifs-pédagogiques)
+  - [📁 Structure du fichier](#-structure-du-fichier)
+  - [🔧 Analyse détaillée des méthodes](#-analyse-détaillée-des-méthodes)
+  - [🔐 Concepts de sécurité appliqués](#-concepts-de-sécurité-appliqués)
+- [Fichier admin-page.php = Vue (Template d'affichage)](#fichier-admin-pagephp--vue-template-daffichage)
+  - [🔧 Analyse du code](#-analyse-du-code)
+  - [🔄 Flux de données](#-flux-de-données)
+    - [De la base de données vers le formulaire](#de-la-base-de-données-vers-le-formulaire)
+    - [Du formulaire vers la base de données](#du-formulaire-vers-la-base-de-données)
+  - [🔐 Sécurité appliquée](#-sécurité-appliquée)
+  - [📝 Variables disponibles dans la vue](#-variables-disponibles-dans-la-vue)
+  - [🔗 Liens avec les autres fichiers](#-liens-avec-les-autres-fichiers)
+- [🎯 Pour aller plus loin](#-allez-plus-loin)
+- [💡 Quelques bonnes pratiques WordPress](#-quelques-bonnes-pratiques-wordpress)
+
 ## 📋 Vue d'ensemble
 
 Ce module WordPress permet de gérer des configurations personnalisées en les stockant dans la table `wp_options` de WordPress. Il s'agit d'un exemple pédagogique pour comprendre les bases du développement de plugins WordPress.
 
 > [📥 Télécharger le module](https://downgit.github.io/#/home?url=https://github.com/webrelief/dwwm/tree/main/config-manager)
+
+### Rendu final
+<img src="screenshot.jpg">
 
 ## 🎯 Objectifs pédagogiques
 
@@ -33,7 +53,7 @@ config-manager/
 
 ## 🔧 Analyse détaillée des méthodes
 
-### 1. **En-tête du plugin**
+### 1. En-tête du plugin
 
 ```php
 /**
@@ -54,7 +74,7 @@ config-manager/
 
 ---
 
-### 2. **Vérification de sécurité**
+### 2. Vérification de sécurité
 
 ```php
 if (!defined('ABSPATH')) {
@@ -73,7 +93,7 @@ if (!defined('ABSPATH')) {
 
 ---
 
-### 3. **Constructeur `__construct()`**
+### 3. Constructeur `__construct()`
 
 ```php
 public function __construct()
@@ -98,7 +118,7 @@ public function __construct()
 
 ---
 
-### 4. **Méthode `addAdminMenu()`**
+### 4. Méthode `addAdminMenu()`
 
 ```php
 public function addAdminMenu()
@@ -129,7 +149,7 @@ public function addAdminMenu()
 
 ---
 
-### 5. **Méthode `enqueueAssets()`**
+### 5. Méthode `enqueueAssets()`
 
 ```php
 public function enqueueAssets($hook)
@@ -202,7 +222,7 @@ wp_enqueue_script(
 
 ---
 
-### 6. **Méthode `renderAdminPage()`**
+### 6. Méthode `renderAdminPage()`
 
 ```php
 public function renderAdminPage()
@@ -224,7 +244,7 @@ public function renderAdminPage()
 
 ---
 
-### 7. **Méthode `getAllConfigs()`**
+### 7. Méthode `getAllConfigs()`
 
 ```php
 private function getAllConfigs()
@@ -303,7 +323,7 @@ foreach ($results as $row) {
 
 ---
 
-### 8. **Méthode `getMessage()`**
+### 4. Méthode `getMessage()`
 
 ```php
 private function getMessage()
@@ -405,27 +425,27 @@ set_transient('config_manager_message', 'Config mise à jour avec succès', 30);
 
 ## 🔐 Concepts de sécurité appliqués
 
-### 1. **Protection contre l'accès direct**
+### 1. Protection contre l'accès direct
 ```php
 if (!defined('ABSPATH')) exit;
 ```
 
-### 2. **Vérification des permissions**
+### 2. Vérification des permissions
 ```php
 if (!current_user_can('manage_options')) return;
 ```
 
-### 3. **Requêtes SQL préparées**
+### 3. Requêtes SQL préparées
 ```php
 $wpdb->prepare("SELECT ... WHERE option_name LIKE %s", $value)
 ```
 
-### 4. **Échappement SQL**
+### 4. Échappement SQL
 ```php
 $wpdb->esc_like($this->prefix)
 ```
 
-### 5. **Échappement HTML dans la vue**
+### 5. Échappement HTML dans la vue
 ```php
 echo esc_html($value);       // Pour le texte
 echo esc_attr($value);       // Pour les attributs
@@ -442,7 +462,7 @@ Ce fichier est le **template HTML** (la "Vue") qui affiche l'interface d'adminis
 
 ## 🔧 Analyse du code
 
-### 1. **Vérification de sécurité**
+### 1. Vérification de sécurité
 
 ```php
 if (!defined('ABSPATH')) {
@@ -457,7 +477,7 @@ if (!defined('ABSPATH')) {
 
 ---
 
-### 2. **Structure principale**
+### 2. Structure principale
 
 ```php
 <div class="config-manager">
@@ -470,7 +490,7 @@ if (!defined('ABSPATH')) {
 
 ---
 
-### 3. **Affichage du message de confirmation**
+### 3. Affichage du message de confirmation
 
 ```php
 <?php if ($message) { ?>
@@ -499,7 +519,7 @@ $message = $this->getMessage();
 
 ---
 
-### 4. **Formulaire de configuration**
+### 4. Formulaire de configuration
 
 ```php
 <form method="post">
@@ -518,7 +538,7 @@ $message = $this->getMessage();
 
 ---
 
-### 5. **Champ Téléphone**
+### 5. Champ Téléphone
 
 ```php
 <div class="row mb-3">
@@ -562,7 +582,7 @@ $message = $this->getMessage();
 
 ---
 
-### 6. **Bouton de soumission**
+### 6. Bouton de soumission
 
 ```php
 <button type="submit" name="save_config" class="btn btn-primary">Sauvegarder</button>
@@ -627,12 +647,12 @@ Affichage de l'alerte de succès
 
 ## 🔐 Sécurité appliquée
 
-### 1. **Protection contre l'accès direct**
+### 1. Protection contre l'accès direct
 ```php
 if (!defined('ABSPATH')) exit;
 ```
 
-### 2. **Échappement HTML**
+### 2. Échappement HTML
 ```php
 echo esc_html($message);
 ```
@@ -687,10 +707,19 @@ value="<?php echo $configs['telephone'] ?? ''; ?>"   // ← Utilise $configs
 
 ---
 
+## 🎯 Allez plus loin
+### Tester le module : 
+
+Pour érifier la présence des options ajoutées dans la table ```wp_options```
+vous pouvez exécuter la requête SQL suivante dans phpMyAdmin : 
+```SELECT * FROM `wp_options` where option_name LIKE 'config_manager%'; ```
+
+
+---
 
 ## 💡 Quelques bonnes pratiques WordPress
 
-### 1. **Utiliser les fonctions WordPress**
+### 1. Utiliser les fonctions WordPress
 ❌ **À éviter :**
 ```php
 mysql_query("SELECT * FROM wp_options WHERE ...");
@@ -701,14 +730,14 @@ mysql_query("SELECT * FROM wp_options WHERE ...");
 $wpdb->get_results($wpdb->prepare("SELECT ..."));
 ```
 
-### 2. **Préfixer les options**
+### 2. Préfixer les options
 ```php
 private $prefix = 'config_manager_';
 ```
 - Évite les conflits avec d'autres plugins
 - Permet de retrouver facilement vos options
 
-### 3. **Charger les assets conditionnellement**
+### 3. Charger les assets conditionnellement
 ```php
 if ($hook !== 'toplevel_page_config-manager') {
     return;
@@ -717,7 +746,7 @@ if ($hook !== 'toplevel_page_config-manager') {
 - Optimise les performances
 - Évite les conflits CSS/JS
 
-### 4. **Utiliser les hooks WordPress**
+### 4. Utiliser les hooks WordPress
 ```php
 add_action('admin_menu', [$this, 'addAdminMenu']);
 ```
