@@ -45,6 +45,9 @@
 - Utilisation des namespaces PHP
 - Gestion des templates
 
+
+> [Télécharger le plugin](https://downgit.github.io/#/home?url=https://github.com/webrelief/dwwm/tree/main/shortcode-creator)
+
 ## Architecture du plugin
 
 ```
@@ -695,5 +698,6 @@ templates/autre-template.php
 // Dans prepareData()
 'categories' => wp_get_post_categories($post->ID, array('fields' => 'names'))
 ```
+
 
 ---
