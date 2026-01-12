@@ -1,4 +1,4 @@
-# DWWM - Exemples de plugin Wordpress
+# DWWM - Exemples de plugins Wordpress
 
 ## Sommaire
 
