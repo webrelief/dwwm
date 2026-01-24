@@ -5,6 +5,7 @@
 1. [Le plugin minimaliste](dwwm-plugin-1/readme.md)
 2. [Plugin - Config manager](config-manager/readme.md)
 3. [Plugin - Shortcode creator](shortcode-creator/readme.md)
+4. [Plugin - CRUD Démo](crud-demo/readme.md)
 
 
 ## Annexes
