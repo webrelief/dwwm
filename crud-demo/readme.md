@@ -40,6 +40,8 @@ crud-demo/
 3. Une table `wp_element` sera automatiquement créée
 4. Accédez au menu "CRUD Démo" dans l'admin
 
+> [📥 Télécharger le module](https://downgit.github.io/#/home?url=https://github.com/webrelief/dwwm/tree/main/crud-demo)
+
 ---
 
 ## 📖 Explication détaillée du code
