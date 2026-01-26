@@ -6,6 +6,7 @@
 2. [Plugin - Config manager](config-manager/readme.md)
 3. [Plugin - Shortcode creator](shortcode-creator/readme.md)
 4. [Plugin - CRUD Démo](crud-demo/readme.md)
+5. [Exemples de codes pour WooCommerce](woo-commerce-samples/readme.md)
 
 
 ## Annexes
