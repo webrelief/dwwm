@@ -24,6 +24,8 @@ front-controller/
 
 ## 🔧 Installation
 
+> [📥 Télécharger le module](https://downgit.github.io/#/home?url=https://github.com/webrelief/dwwm/tree/main/front-controller)
+
 1. **Placer le plugin dans WordPress**
    ```
    wp-content/plugins/front-controller/
