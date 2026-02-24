@@ -104,6 +104,12 @@ public function addRewriteRules()
          'index.php?my_route=formulaire',
          'top'
     );
+
+    add_rewrite_rule(
+        '^route-demo-slug/(.*)$',
+        'index.php?element=$matches[1]',
+        'top'
+    );
 }
 ```
 
@@ -129,6 +135,28 @@ Quand un visiteur tape `https://votresite.com/page-front-controller` :
 3. Il trouve notre règle et transforme ça en `index.php?my_route=method_helloworld`
 4. WordPress charge `index.php` avec le paramètre `my_route=method_helloworld`
 
+
+**Explication ligne par ligne : de la 3° règle**
+- **Premier paramètre** : Expression régulière qui définit l'URL
+  - `^route-demo-slug/(.*)$` = L'URL doit commencer par "route-demo-slug/" suivi de n'importe quoi
+  - `^` = début de l'URL
+  - `(.*)` = capture tout ce qui suit (le "slug" dynamique)
+  - `$` = fin de l'URL
+
+- **Deuxième paramètre** : Ce que WordPress doit faire en interne
+  - `index.php?element=$matches[1]` = Transformer l'URL en paramètre de requête
+  - `$matches[1]` = La valeur capturée par `(.*)`
+
+- **Troisième paramètre** : Priorité
+  - `'top'` = Cette règle est vérifiée en premier
+
+**🔍 Exemple concret :**
+Quand un visiteur tape `https://votresite.com/route-demo-slug/mon-element` :
+1. WordPress voit cette URL
+2. Il vérifie les règles de réécriture
+3. Il trouve notre règle et transforme ça en `index.php?element=mon-element`
+4. WordPress charge `index.php` avec le paramètre `element=mon-element`
+
 ---
 
 #### D. Déclarer les variables personnalisées
@@ -137,6 +165,7 @@ Quand un visiteur tape `https://votresite.com/page-front-controller` :
 public function addQueryVars($vars)
 {
     $vars[] = 'my_route';
+    $vars[] = 'element';
     return $vars;
 }
 ```
@@ -145,7 +174,7 @@ public function addQueryVars($vars)
 
 **Sans cette étape :** `get_query_var('my_route')` retournerait toujours vide, même si l'URL contient `?my_route=formulaire`.
 
-**💡 Analogie :** C'est comme déclarer une variable en JavaScript avant de l'utiliser. WordPress a besoin de savoir que `my_route` est une variable valide.
+**💡 Analogie :** C'est comme déclarer une variable en JavaScript avant de l'utiliser. WordPress a besoin de savoir que `my_route` et `element` sont des variables valides.
 
 ---
 
@@ -155,12 +184,16 @@ public function addQueryVars($vars)
 public function handleCustomRoute()
 {
     $my_route = get_query_var('my_route', false);
+    $element = get_query_var('element', false);
     
     if ($my_route === 'method_helloworld') {
         $this->renderPageHelloWorld();
         exit;
     } elseif ($my_route === 'formulaire') {
         $this->renderPageFormulaire();
+        exit;
+    } elseif ($element !== false) {
+        $this->renderPageElement($element);
         exit;
     }
 }
