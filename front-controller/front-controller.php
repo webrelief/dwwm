@@ -39,6 +39,12 @@ class FrontControllerPlugin
              'index.php?my_route=formulaire',
              'top'
         );
+
+        add_rewrite_rule(
+             '^route-demo-slug/(.*)$',
+             'index.php?element=$matches[1]',
+             'top'
+        );
     }
     /**
      * Ajouter les variables de requête personnalisées
@@ -46,6 +52,7 @@ class FrontControllerPlugin
     public function addQueryVars($vars)
     {
         $vars[] = 'my_route';
+        $vars[] = 'element';
         return $vars;
     }
     /**
@@ -54,6 +61,7 @@ class FrontControllerPlugin
     public function handleCustomRoute()
     {
         $my_route = get_query_var('my_route', false);
+        $element = get_query_var('element', false);
         
         if ($my_route === 'method_helloworld') {
             $this->renderPageHelloWorld();
@@ -61,6 +69,33 @@ class FrontControllerPlugin
         } elseif ($my_route === 'formulaire') {
             $this->renderPageFormulaire();
             exit;
+        } elseif ($element !== false) {
+            $this->renderPageElement($element);
+            exit;
+        }
+    }
+
+    private function renderPageElement($element)
+    {
+        // Ici, on peut récupérer les données associées à l'élément:
+        // $element_data = $this->getElementDataBySlug($element);
+        $data = array(
+            'element' => 'Mon element de démo',
+            'element_value' => $element
+        );
+                
+        // Les variables sont extraites et disponibles dans la vue
+        extract($data);
+
+        ob_start();
+        include plugin_dir_path(__FILE__) . 'views/single_element.php';
+        $template = ob_get_clean();
+
+        
+        if (function_exists('wp_is_block_theme') && wp_is_block_theme()) {
+            include plugin_dir_path(__FILE__) . 'views/fse-theme.php';
+        } else {
+            include plugin_dir_path(__FILE__) . 'views/classic-theme.php';
         }
     }
 
